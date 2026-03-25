@@ -19,7 +19,6 @@
       --accent-soft: rgba(139, 115, 85, 0.12);
       --line: rgba(44, 40, 37, 0.08);
       --radius: 14px;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
       --font-serif: "Noto Serif KR", serif;
       --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
@@ -398,13 +397,6 @@
       border-color: var(--accent);
     }
 
-    .footer {
-      text-align: center;
-      padding: 32px 22px calc(40px + var(--safe-bottom));
-      font-size: 0.72rem;
-      color: var(--ink-muted);
-    }
-
   </style>
 </head>
 <body>
@@ -562,10 +554,6 @@
       </p>
     </section>
   </main>
-
-  <footer class="footer">
-    모바일 청첩장 · HTML / JS
-  </footer>
 
   <script src="main.js"></script>
 </body>
