@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f8f5f0" />
+  <meta name="description" content="김동현 ♥ 김현정 결혼합니다." />
+  <title>김동현 ♥ 김현정 결혼합니다.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f6f1;
+      --surface: #fffefb;
+      --ink: #2c2825;
+      --ink-muted: #6b6560;
+      --accent: #8b7355;
+      --accent-soft: rgba(139, 115, 85, 0.12);
+      --line: rgba(44, 40, 37, 0.08);
+      --radius: 14px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --font-serif: "Noto Serif KR", serif;
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(249, 246, 241, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav__inner {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 10px 14px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .nav__inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav a.is-active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    section {
+      padding: 48px 22px 56px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line);
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 36px;
+      padding-bottom: 40px;
+    }
+
+    .hero__names {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: clamp(1.35rem, 4.5vw, 1.55rem);
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+    }
+
+    .hero__heart {
+      display: inline-block;
+      margin: 0 0.35em;
+      color: var(--accent);
+      font-size: 0.85em;
+    }
+
+    .hero__date {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .hero__place {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+    }
+
+    .scroll-hint {
+      margin-top: 28px;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--ink-muted);
+      opacity: 0.75;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 28px;
+      letter-spacing: 0.15em;
+      color: var(--ink);
+    }
+
+    .poem {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 2.05;
+      text-align: center;
+      color: var(--ink-muted);
+    }
+
+    .poem p {
+      margin-bottom: 1.1em;
+    }
+
+    .poem strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .couple-grid {
+      display: grid;
+      gap: 28px;
+      margin-top: 8px;
+    }
+
+    .person {
+      text-align: center;
+    }
+
+    .person__role {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .person__name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .person__parents {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      border-color: rgba(139, 115, 85, 0.35);
+      box-shadow: 0 4px 14px rgba(44, 40, 37, 0.06);
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .btn--primary:hover {
+      opacity: 0.92;
+      text-decoration: none;
+    }
+
+    .calendar-wrap {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px 14px;
+      border: 1px solid var(--line);
+    }
+
+    .calendar-month {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      color: var(--ink-muted);
+    }
+
+    .calendar {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .calendar th {
+      font-weight: 500;
+      color: var(--ink-muted);
+      padding: 8px 2px;
+    }
+
+    .calendar td {
+      padding: 8px 2px;
+      color: var(--ink-muted);
+    }
+
+    .calendar td.is-today {
+      background: var(--accent-soft);
+      color: var(--ink);
+      font-weight: 600;
+      border-radius: 8px;
+    }
+
+    .calendar td.is-empty {
+      background: transparent;
+    }
+
+    .countdown {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      margin-top: 24px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+
+    .countdown strong {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 10px 0 4px;
+    }
+
+    .map-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 18px 0 22px;
+    }
+
+    .info-block {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      border: 1px solid var(--line);
+      font-size: 0.86rem;
+      color: var(--ink-muted);
+    }
+
+    .info-block h3 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .info-block p {
+      margin-bottom: 0.85em;
+    }
+
+    .info-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .account-group {
+      margin-bottom: 22px;
+    }
+
+    .account-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .account-group h3 {
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .account-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.84rem;
+    }
+
+    .account-row:last-child {
+      border-bottom: none;
+    }
+
+    .account-row__label {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .account-row__meta {
+      color: var(--ink-muted);
+      font-size: 0.8rem;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      font-size: 0.72rem;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .copy-btn.is-done {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 22px calc(40px + var(--safe-bottom));
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="섹션 이동">
+    <div class="nav__inner">
+      <a href="#main">메인</a>
+      <a href="#letter">글귀</a>
+      <a href="#intro">소개</a>
+      <a href="#calendar">달력</a>
+      <a href="#location">오시는 길</a>
+      <a href="#accounts">계좌번호</a>
+      <a href="#countdown">함께한 시간</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="main" class="hero">
+      <h1 class="hero__names">김동현 <span class="hero__heart" aria-hidden="true">♥</span> 김현정</h1>
+      <p class="hero__date">2026년 5월 23일 토요일<br />오후 12시 20분</p>
+      <p class="hero__place">더컨벤션 영등포 2층 다이너스티홀</p>
+      <p class="scroll-hint">SCROLL</p>
+    </section>
+
+    <section id="letter">
+      <h2 class="section-title">글귀</h2>
+      <div class="poem">
+        <p><strong>동</strong>일한 하늘 아래 서로를 향해 걸어오다</p>
+        <p><strong>현</strong>재라는 순간 속에서 운명처럼 마주친 두 사람</p>
+        <p><strong>현</strong>재의 설렘을 넘어, 다가올 모든 계절을<br />함께하기로 약속하며</p>
+        <p><strong>정</strong>성 어린 마음으로 평생의 사랑을<br />시작하려 합니다.</p>
+        <p>저희의 첫걸음에 함께해 주신다면<br />그 축복을 소중히 간직하며 살아가겠습니다.</p>
+      </div>
+    </section>
+
+    <section id="intro">
+      <h2 class="section-title">소개</h2>
+      <div class="couple-grid">
+        <div class="person">
+          <p class="person__role">신랑</p>
+          <p class="person__name">김동현</p>
+          <p class="person__parents">김형준 · 황선미 의 아들</p>
+        </div>
+        <div class="person">
+          <p class="person__role">신부</p>
+          <p class="person__name">김현정</p>
+          <p class="person__parents">김용만 · 장순득 의 딸</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar">
+      <h2 class="section-title">달력</h2>
+      <p class="calendar-month">오월의 스물세 번째 날.</p>
+      <div class="calendar-wrap">
+        <table class="calendar" id="calendar-table" aria-label="2026년 5월">
+          <thead>
+            <tr>
+              <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
+            </tr>
+          </thead>
+          <tbody id="calendar-body"></tbody>
+        </table>
+      </div>
+      <div class="countdown" id="countdown-block" aria-live="polite">
+        <span>동현 현정 결혼식까지</span>
+        <strong id="countdown-text">—</strong>
+      </div>
+    </section>
+
+    <section id="location">
+      <h2 class="section-title">오시는 길</h2>
+      <div class="info-block" style="text-align: center; margin-bottom: 18px;">
+        <p style="font-family: var(--font-serif); font-size: 1rem; color: var(--ink); margin-bottom: 6px;">더컨벤션 영등포</p>
+        <p>2층 다이너스티홀</p>
+        <p>서울 영등포구 국회대로38길 2<br />(당산동3가 93-2)</p>
+      </div>
+      <div class="map-links">
+        <a class="btn" href="https://tmap.co.kr/tmap2/mobile/route.jsp#/route?goal_x=126.9025&goal_y=37.5259&goal_name=%EB%8D%94%EC%BB%A4%EB%B2%A4%EC%85%98%20%EC%98%81%EB%93%B1%ED%8F%AC" target="_blank" rel="noopener noreferrer">티맵</a>
+        <a class="btn" href="https://map.kakao.com/link/to/더컨벤션영등포,37.5259,126.9025" target="_blank" rel="noopener noreferrer">카카오내비</a>
+        <a class="btn" href="https://map.naver.com/p/search/%EB%8D%94%EC%BB%A4%EB%B2%A4%EC%85%98%20%EC%98%81%EB%93%B1%ED%8F%AC" target="_blank" rel="noopener noreferrer">네이버지도</a>
+      </div>
+      <div class="info-block">
+        <h3>버스</h3>
+        <p>영등포경찰서 / 영등포구청역 하차 후 도보 이용</p>
+        <p>[지선] 5620, 6631, 6637 · [일반] 5 · [간선] 670<br />[마을] 영등포02, 12 · [광역] 2500</p>
+      </div>
+      <div class="info-block" style="margin-top: 14px;">
+        <h3>지하철</h3>
+        <p>[2 · 5호선] 영등포구청역 4번 출구에서 도보 약 3분</p>
+      </div>
+      <div class="info-block" style="margin-top: 14px;">
+        <h3>자가용</h3>
+        <p>1. 웨딩홀 맞은편 공영주차장 (주차요원 안내)</p>
+        <p>2. 삼성생명 주차장 — 서울 영등포구 국회대로 559 (도보 약 5분, 주차요원 없이 주차 가능)</p>
+        <p>주차 공간이 협소하오니 되도록 대중교통 이용을 부탁드립니다.</p>
+      </div>
+    </section>
+
+    <section id="accounts">
+      <h2 class="section-title">마음 전하실 곳</h2>
+      <p style="text-align: center; font-size: 0.86rem; color: var(--ink-muted); margin-bottom: 22px; line-height: 1.85;">
+        멀리서도 축하의 마음을 전하고 싶으신 분들을 위해 계좌번호를 안내드립니다.<br />
+        소중한 축하에 깊이 감사드립니다.
+      </p>
+
+      <div class="info-block">
+        <div class="account-group">
+          <h3>신랑측</h3>
+          <div class="account-row">
+            <div>
+              <div class="account-row__label">신랑</div>
+              <div class="account-row__meta">3333169056585 · 카카오뱅크 김동현</div>
+            </div>
+            <button type="button" class="copy-btn" data-copy="3333169056585">복사</button>
+          </div>
+          <div class="account-row">
+            <div>
+              <div class="account-row__label">신랑 아버지</div>
+              <div class="account-row__meta">13689002556507 · 하나은행 김형준</div>
+            </div>
+            <button type="button" class="copy-btn" data-copy="13689002556507">복사</button>
+          </div>
+        </div>
+        <div class="account-group">
+          <h3>신부측</h3>
+          <div class="account-row">
+            <div>
+              <div class="account-row__label">신부</div>
+              <div class="account-row__meta">3561017134023 · 농협 김현정</div>
+            </div>
+            <button type="button" class="copy-btn" data-copy="3561017134023">복사</button>
+          </div>
+          <div class="account-row">
+            <div>
+              <div class="account-row__label">신부 아버지</div>
+              <div class="account-row__meta">1002433622710 · 우리은행 김용만</div>
+            </div>
+            <button type="button" class="copy-btn" data-copy="1002433622710">복사</button>
+          </div>
+          <div class="account-row">
+            <div>
+              <div class="account-row__label">신부 어머니</div>
+              <div class="account-row__meta">110165376225 · 신한은행 장순득</div>
+            </div>
+            <button type="button" class="copy-btn" data-copy="110165376225">복사</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="countdown">
+      <h2 class="section-title">함께한 시간</h2>
+      <p class="countdown" style="margin-top: 0;">
+        동현 · 현정의 결혼식이 <strong id="past-count">—</strong>
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    모바일 청첩장 · HTML / JS
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
