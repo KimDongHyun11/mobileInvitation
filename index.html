@@ -134,12 +134,14 @@
       color: var(--ink-muted);
     }
 
-    .scroll-hint {
+    .hero__joyfull {
       margin-top: 28px;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--ink-muted);
-      opacity: 0.75;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: min(430px, 94vw);
+      width: 100%;
+      height: auto;
     }
 
     .section-title {
@@ -408,7 +410,6 @@
       <a href="#calendar">달력</a>
       <a href="#location">오시는 길</a>
       <a href="#accounts">계좌번호</a>
-      <a href="#countdown">함께한 시간</a>
     </div>
   </nav>
 
@@ -417,7 +418,7 @@
       <h1 class="hero__names">김동현 <span class="hero__heart" aria-hidden="true">♥</span> 김현정</h1>
       <p class="hero__date">2026년 5월 23일 토요일<br />오후 12시 20분</p>
       <p class="hero__place">더컨벤션 영등포 2층 다이너스티홀</p>
-      <p class="scroll-hint">SCROLL</p>
+      <img class="hero__joyfull" src="joyfull.png" alt="" decoding="async" />
     </section>
 
     <section id="letter">
@@ -545,13 +546,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="countdown">
-      <h2 class="section-title">함께한 시간</h2>
-      <p class="countdown" style="margin-top: 0;">
-        동현 · 현정의 결혼식이 <strong id="past-count">—</strong>
-      </p>
     </section>
   </main>
 

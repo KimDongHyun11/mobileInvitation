@@ -61,24 +61,20 @@
   }
 
   function updateCountdown() {
-    var now = new Date();
     var el = document.getElementById("countdown-text");
-    var pastEl = document.getElementById("past-count");
-    if (!el || !pastEl) return;
+    if (!el) return;
 
+    var now = new Date();
     var diff = WEDDING_DATE.getTime() - now.getTime();
 
     if (diff > 0) {
       var txt = formatCountdown(diff);
       el.textContent = txt || "곧 만나요";
-      pastEl.textContent = "아직 " + (txt ? txt.split(" ")[0] + " 남았습니다." : "다가오고 있습니다.");
     } else {
-      el.textContent = "오늘이에요 ♥";
       var passed = now.getTime() - WEDDING_DATE.getTime();
       var d = Math.floor(passed / 86400000);
-      if (d === 0) pastEl.textContent = "바로 오늘입니다. 함께해 주셔서 감사합니다.";
-      else if (d === 1) pastEl.textContent = "어제 1일째, 함께한 날을 기억하며 살아가겠습니다.";
-      else pastEl.textContent = d + "일 지났습니다. 감사의 마음 잊지 않겠습니다.";
+      if (d === 0) el.textContent = "오늘이에요 ♥";
+      else el.textContent = d + "일 지났습니다 ♥";
     }
   }
 
